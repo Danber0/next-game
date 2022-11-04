@@ -1,0 +1,13 @@
+@import "styles/variables";
+
+.card {
+  background-color: $backgroundColor;
+  width: 150px;
+  height: 150px;
+  font-size: 100px;
+  text-align: center;
+  color: $textColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

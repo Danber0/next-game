@@ -1,0 +1,26 @@
+@import "variables";
+
+@mixin initialStyle {
+  color: $textColor;
+  background-color: $backgroundColor;
+  padding: 8px 15px;
+  font-size: 15px;
+  border-radius: 10px;
+  font-style: normal;
+  font-weight: 400;
+  margin-right: 15px;
+}
+
+.button {
+  @include initialStyle;
+  cursor: pointer;
+  border: none;
+}
+
+.info {
+  @include initialStyle;
+}
+
+.active {
+  color: $activeTextColor;
+}

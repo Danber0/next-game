@@ -1,0 +1,39 @@
+@import "styles/variables";
+
+.desc {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: $textColor;
+}
+
+.filter {
+  margin-bottom: 15px;
+}
+
+.settings {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  .start {
+    input {
+      outline: none;
+      color: $textColor;
+      background-color: $backgroundColor;
+      padding: 8px 15px;
+      font-size: 15px;
+      border-radius: 10px;
+      font-style: normal;
+      font-weight: 400;
+      margin-right: 15px;
+      border: none;
+      width: 226px;
+    }
+  }
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(8, 150px);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
