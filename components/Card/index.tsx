@@ -12,9 +12,12 @@ interface CardProps {
 
 const Card: FC<CardProps> = ({ url, active, onClick }) => {
   return (
-    <div className={styles.card} onClick={onClick}>
-      {active ? (
-        <div className={styles.front}>
+    <div
+      className={active ? `${styles.active} ${styles.card}` : styles.card}
+      onClick={onClick}
+    >
+      <div className={styles.flipCard}>
+        <div className={styles.back}>
           <Image
             src={url}
             alt="Картинка"
@@ -23,9 +26,8 @@ const Card: FC<CardProps> = ({ url, active, onClick }) => {
             className={styles.image}
           />
         </div>
-      ) : (
-        <div className={styles.back}>?</div>
-      )}
+        <div className={styles.front}>?</div>
+      </div>
     </div>
   );
 };

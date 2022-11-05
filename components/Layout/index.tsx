@@ -1,7 +1,11 @@
 import React, { FC } from "react";
-import Link from "next/link";
+import { ToastContainer } from "react-toastify";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
+import Divider from "components/Divider";
+
+import "react-toastify/dist/ReactToastify.css";
 import styles from "styles/Layout.module.scss";
 
 interface Layout {
@@ -38,6 +42,8 @@ const Layout: FC<Layout> = ({ children }) => {
           </li>
         </ul>
       </nav>
+      <Divider />
+      <ToastContainer position="top-left" theme="dark" />
       {children}
     </div>
   );

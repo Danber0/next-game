@@ -10,7 +10,7 @@
       display: flex;
 
       li {
-        padding-right: 45px;
+        padding-right: 200px;
         a {
           font-size: 25px;
           color: $textColor;
@@ -18,8 +18,7 @@
         }
 
         .active {
-          color: $activeTextColor;
-          border-bottom: 1px solid $activeTextColor;
+          color: $backgroundColorButton;
         }
       }
     }

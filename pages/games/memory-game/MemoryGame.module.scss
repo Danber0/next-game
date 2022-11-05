@@ -1,39 +1,57 @@
 @import "styles/variables";
 
-.desc {
-  font-size: 14px;
-  margin-bottom: 15px;
-  color: $textColor;
-}
+.container {
+  .settings {
+    margin-bottom: 25px;
 
-.filter {
-  margin-bottom: 15px;
-}
+    .settingsInner {
+      display: flex;
 
-.settings {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  .start {
-    input {
-      outline: none;
-      color: $textColor;
-      background-color: $backgroundColor;
-      padding: 8px 15px;
-      font-size: 15px;
-      border-radius: 10px;
-      font-style: normal;
-      font-weight: 400;
-      margin-right: 15px;
-      border: none;
-      width: 226px;
+      .start {
+        input {
+          outline: none;
+          color: $textColor;
+          padding: 8px 15px;
+          background-color: transparent;
+          font-size: 15px;
+          border-radius: 10px;
+          font-style: normal;
+          font-weight: 400;
+          margin-right: 15px;
+          border: 1px solid #353535;
+          width: 226px;
+
+          &::placeholder {
+            color: $textColor;
+          }
+        }
+      }
     }
   }
-}
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(8, 150px);
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
+  .cards {
+    display: grid;
+    justify-content: center;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+
+  .notActive {
+    .info {
+      display: none;
+    }
+  }
+
+  .active {
+    .info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .settings {
+      display: none;
+    }
+  }
 }

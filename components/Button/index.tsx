@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import Link from "next/link";
 
 import styles from "styles/Button.module.scss";
 
@@ -10,6 +11,8 @@ interface ButtonProps {
   color?: string;
   backgroundColor?: string;
   onClick?: () => void;
+  href?: string;
+  title?: string;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -20,25 +23,30 @@ const Button: FC<ButtonProps> = ({
   onClick,
   color,
   backgroundColor,
+  href,
+  title,
 }) => {
   return (
     <React.Fragment>
       {type === "button" ? (
         <button
+          title={title}
           className={
             active ? `${styles.active} ${styles.button}` : styles.button
           }
           onClick={onClick}
-          style={{ color, backgroundColor }}
+          style={{ color, backgroundColor, cursor: !href ? "pointer" : "auto" }}
         >
-          {text}
+          {href ? <Link href={href}>{text}</Link> : text}
         </button>
       ) : (
         <span
           className={active ? `${styles.active} ${styles.info}` : styles.info}
           style={{ color, backgroundColor }}
         >
-          {text} {children}
+          <span>
+            {text} {children}
+          </span>
         </span>
       )}
     </React.Fragment>
