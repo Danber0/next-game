@@ -1,4 +1,6 @@
-export const filters = [
+import { CardType, filterType } from "types";
+
+export const filters: filterType[] = [
   {
     id: 0,
     name: "Еда",
@@ -12,11 +14,6 @@ export const filters = [
     name: "Пони",
   },
 ];
-
-export type CardType = {
-  id: number;
-  url: string;
-};
 
 export const cards: CardType[] = [
   {

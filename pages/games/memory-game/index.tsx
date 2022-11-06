@@ -8,9 +8,9 @@ import Layout from "components/Layout";
 
 import styles from "./MemoryGame.module.scss";
 
-import { CardType, generateCards } from "./helper";
-
-import { filters } from "./utils";
+import { generateCards } from "config/helpers";
+import { filters } from "config/arrays";
+import { CardType } from "types";
 
 const getCard = generateCards(16);
 

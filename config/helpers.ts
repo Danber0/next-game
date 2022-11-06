@@ -1,9 +1,5 @@
-import { cards } from "./utils";
-
-export type CardType = {
-  id: number;
-  url: string;
-};
+import { cards } from "./arrays";
+import { CardType } from "types";
 
 export const generateCards = (number: number): CardType[] => {
   let res: any = [];
