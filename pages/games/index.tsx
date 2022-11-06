@@ -9,9 +9,10 @@ const Games = () => {
   const pathname = usePathname();
   const router = useRouter();
 
+  //react-hooks/exhaustive-deps
   useEffect(() => {
     router.push("games/memory-game");
-  }, []);
+  }, [router]);
 
   return (
     <Layout>

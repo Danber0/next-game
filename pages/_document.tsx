@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Main, Head, NextScript } from "next/document";
 
 export default function Document() {
   return (
@@ -10,7 +10,6 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
           rel="stylesheet"
         />
-        <title>Game</title>
       </Head>
       <body>
         <Main />
