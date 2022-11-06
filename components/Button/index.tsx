@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Link from "next/link";
 
 import styles from "styles/Button.module.scss";
+import classNames from "classnames/bind";
 
 interface ButtonProps {
   children?: React.ReactNode;
@@ -13,7 +14,11 @@ interface ButtonProps {
   onClick?: () => void;
   href?: string;
   title?: string;
+  disabled?: boolean;
+  padding?: boolean;
 }
+
+const cx = classNames.bind(styles);
 
 const Button: FC<ButtonProps> = ({
   children,
@@ -25,17 +30,23 @@ const Button: FC<ButtonProps> = ({
   backgroundColor,
   href,
   title,
+  disabled,
+  padding,
 }) => {
   return (
     <React.Fragment>
       {type === "button" ? (
         <button
           title={title}
-          className={
-            active ? `${styles.active} ${styles.button}` : styles.button
-          }
+          disabled={disabled}
+          className={cx({
+            button: true,
+            active: active,
+            disabled: disabled,
+            padding: padding,
+          })}
           onClick={onClick}
-          style={{ color, backgroundColor, cursor: !href ? "pointer" : "auto" }}
+          style={{ color, backgroundColor }}
         >
           {href ? <Link href={href}>{text}</Link> : text}
         </button>

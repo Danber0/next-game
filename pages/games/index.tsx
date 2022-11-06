@@ -3,7 +3,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 import MemoryGame from "./memory-game";
 import Layout from "components/Layout";
-import Game from "../../components/Game";
+import Game from "components/Game";
 
 const Games = () => {
   const pathname = usePathname();

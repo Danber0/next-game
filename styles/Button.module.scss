@@ -2,7 +2,6 @@
 
 @mixin initialStyle {
   color: $textColor;
-  padding: 8px 15px;
   font-size: 15px;
   border-radius: 10px;
   font-style: normal;
@@ -18,6 +17,7 @@
 
 .button {
   @include initialStyle;
+  cursor: pointer;
   border: none;
 }
 
@@ -26,6 +26,16 @@
 }
 
 .active {
+  padding: 8px 15px;
   color: $activeTextColor;
   background-color: $backgroundColorButton;
+}
+
+.disabled {
+  color: darken($activeTextColor, 30%);
+  cursor: not-allowed;
+}
+
+.padding {
+  padding: 8px 15px;
 }

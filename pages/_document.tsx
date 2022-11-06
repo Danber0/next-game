@@ -7,9 +7,14 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
+          rel="shortcut icon"
+          href="https://cdn-icons-png.flaticon.com/512/5260/5260498.png"
+        />
+        <link
           href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
           rel="stylesheet"
         />
+        <title>Next-Games</title>
       </Head>
       <body>
         <Main />

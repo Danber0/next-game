@@ -33,6 +33,8 @@ const MemoryGame = () => {
     let timer: NodeJS.Timer;
     setTime(0);
     setTryCount(0);
+    setClosedCards([]);
+    setActiveCards([]);
 
     if (isStart) {
       timer = setInterval(() => {
@@ -46,6 +48,12 @@ const MemoryGame = () => {
   const handleClickStart = () => {
     if (!inputPair) {
       return toast("Введите количество пар.", {
+        autoClose: 1000,
+        pauseOnHover: false,
+      });
+    }
+    if (isNaN(Number(inputPair))) {
+      return toast("Введите только число", {
         autoClose: 1000,
         pauseOnHover: false,
       });
@@ -127,6 +135,7 @@ const MemoryGame = () => {
                     text={filter.name}
                     active={filter.name === filtered}
                     onClick={() => setFiltered(filter.name)}
+                    disabled={filter.name !== filtered}
                   />
                 ))}
               </div>
@@ -140,6 +149,7 @@ const MemoryGame = () => {
                   text="Старт"
                   backgroundColor="#00c35a"
                   onClick={() => handleClickStart()}
+                  padding
                   title="В этой игре тебе нужно открывать карточки, и искать пару к карточкам. Всего у карточки может быть 1 пара.Снизу ты можешь настроить, какие карточки ты хочешь искать, и сколько пар у тебя будет. Удачи!"
                 />
               </div>
@@ -151,11 +161,13 @@ const MemoryGame = () => {
                 text="Назад"
                 backgroundColor="#00c35a"
                 onClick={handleClickBack}
+                padding
               />
               <Button
                 text="Рестарт"
                 backgroundColor="#00c35a"
                 onClick={handleClickRestart}
+                padding
               />
             </div>
             <div className={styles.right}>
