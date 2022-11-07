@@ -16,6 +16,7 @@ interface ButtonProps {
   title?: string;
   disabled?: boolean;
   padding?: boolean;
+  fontSize?: number;
 }
 
 const cx = classNames.bind(styles);
@@ -32,6 +33,7 @@ const Button: FC<ButtonProps> = ({
   title,
   disabled,
   padding,
+  fontSize,
 }) => {
   return (
     <React.Fragment>
@@ -46,14 +48,14 @@ const Button: FC<ButtonProps> = ({
             padding: padding,
           })}
           onClick={onClick}
-          style={{ color, backgroundColor }}
+          style={{ color, backgroundColor, fontSize }}
         >
           {href ? <Link href={href}>{text}</Link> : text}
         </button>
       ) : (
         <span
           className={active ? `${styles.active} ${styles.info}` : styles.info}
-          style={{ color, backgroundColor }}
+          style={{ color, backgroundColor, fontSize }}
         >
           <span>
             {text} {children}
