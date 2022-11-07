@@ -3,7 +3,7 @@ import Image from "next/legacy/image";
 
 import Layout from "components/Layout";
 import Button from "components/Button";
-import Divider from "components/Divider";
+import Footer from "components/Footer";
 
 import styles from "styles/Home.module.scss";
 
@@ -13,8 +13,8 @@ const Home: FC = () => {
       <main className={styles.main}>
         <div className={styles.content}>
           <div className={styles.text}>
-            Приветствую тебя на сайте со сборником разных игры для тренировка
-            твоего <span>мозга</span> и не только
+            Приветствую тебя на сайте со сборником разных игры для тренировки
+            твоего <span>мозга</span> и не только.
           </div>
           <div className={styles.image}>
             <Image
@@ -30,41 +30,11 @@ const Home: FC = () => {
             padding
             backgroundColor="#00c35a"
             fontSize={45}
-            href="games/memory-game"
+            href="games"
           />
         </div>
       </main>
-      <footer className={styles.footer}>
-        <Divider />
-        <div className={styles.contact}>
-          <span>
-            Site by &nbsp;
-            <a
-              href="https://career.habr.com/danber"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Danber
-            </a>
-          </span>
-          <span>
-            Telegram: &nbsp;
-            <a href="https://t.me/danberl" target="_blank" rel="noreferrer">
-              @Danber
-            </a>
-          </span>
-          <span>
-            Email: &nbsp;
-            <a
-              href="mailto:bergauzen.danil@mail.ru"
-              target="_blank"
-              rel="noreferrer"
-            >
-              bergauzen.danil@mail.ru
-            </a>
-          </span>
-        </div>
-      </footer>
+      <Footer />
     </Layout>
   );
 };

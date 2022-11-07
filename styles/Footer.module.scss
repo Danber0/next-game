@@ -1,0 +1,22 @@
+@import "variables";
+
+.footer {
+  width: 1270px;
+  position: fixed;
+  bottom: 0;
+
+  .contact {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+
+    span {
+      color: $textColor;
+      font-size: 20px;
+      a {
+        color: $backgroundColorButton;
+        text-decoration: none;
+      }
+    }
+  }
+}

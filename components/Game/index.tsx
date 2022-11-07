@@ -1,25 +1,41 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import Button from "components/Button";
+import ActiveGame from "components/ActiveGame";
+
 import { games } from "components/Layout/utils";
 
 import styles from "styles/LayoutGame.module.scss";
 
 const Game: FC = () => {
   const pathname = usePathname();
-  const currentPath = "/" + pathname?.split("/").at(-1);
+  const [activeGame, setActiveGame] = useState(games[0]);
 
   return (
     <div className={styles.games}>
       {games.map((game) => (
-        <Button
-          key={game.id}
-          text={game.name}
-          active={currentPath === game.url}
-          href={`/games${game.url}`}
-        />
+        <React.Fragment key={game.id}>
+          <Button
+            text={game.name}
+            active={activeGame.id === game.id}
+            onClick={() => setActiveGame(game)}
+            disabled={!game.text}
+          />
+        </React.Fragment>
       ))}
+      {games.map(
+        (game) =>
+          activeGame.id === game.id &&
+          pathname === "/games" && (
+            <ActiveGame
+              key={game.id}
+              path={activeGame.url}
+              pathToImage={activeGame.pathToImage}
+              text={activeGame.text}
+            />
+          )
+      )}
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import Link from "next/link";
+import classNames from "classnames/bind";
 
 import styles from "styles/Button.module.scss";
-import classNames from "classnames/bind";
 
 interface ButtonProps {
   children?: React.ReactNode;
@@ -17,6 +17,7 @@ interface ButtonProps {
   disabled?: boolean;
   padding?: boolean;
   fontSize?: number;
+  style?: any;
 }
 
 const cx = classNames.bind(styles);
@@ -34,6 +35,7 @@ const Button: FC<ButtonProps> = ({
   disabled,
   padding,
   fontSize,
+  style,
 }) => {
   return (
     <React.Fragment>
@@ -48,7 +50,7 @@ const Button: FC<ButtonProps> = ({
             padding: padding,
           })}
           onClick={onClick}
-          style={{ color, backgroundColor, fontSize }}
+          style={{ color, backgroundColor, fontSize, ...style }}
         >
           {href ? <Link href={href}>{text}</Link> : text}
         </button>

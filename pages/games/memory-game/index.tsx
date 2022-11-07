@@ -3,16 +3,16 @@ import { toast } from "react-toastify";
 
 import Button from "components/Button";
 import Card from "components/Card";
-import Game from "components/Game";
 import Layout from "components/Layout";
 
 import styles from "./MemoryGame.module.scss";
 
 import { generateCards } from "config/helpers";
 import { filters } from "config/arrays";
+
 import { CardType } from "types";
 
-const getCard = generateCards(16);
+const getCard = generateCards(20);
 
 const MemoryGame = () => {
   const [filtered, setFiltered] = useState("Еда");
@@ -126,7 +126,6 @@ const MemoryGame = () => {
       <div className={styles.container}>
         <div className={isStart ? styles.active : styles.notActive}>
           <div className={styles.settings}>
-            <Game />
             <div className={styles.settingsInner}>
               <div className={styles.filter}>
                 {filters.map((filter) => (

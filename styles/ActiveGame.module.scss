@@ -1,23 +1,19 @@
 @import "variables";
 
-.main {
-  .content {
+.content {
+  position: relative;
+  .activeGame {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
 
     .text {
       font-family: "Nunito", sans-serif;
       font-style: normal;
       font-weight: 700;
-      font-size: 45px;
+      font-size: 30px;
+      line-height: 41px;
       color: $textColor;
-      line-height: 61px;
-
-      span {
-        color: $backgroundColorButton;
-      }
     }
 
     .image {
@@ -26,10 +22,5 @@
         height: 100%;
       }
     }
-  }
-
-  button {
-    position: absolute;
-    bottom: 20px;
   }
 }

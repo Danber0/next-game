@@ -1,23 +1,14 @@
-import React, { useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import React, { FC } from "react";
 
-import MemoryGame from "./memory-game";
 import Layout from "components/Layout";
 import Game from "components/Game";
+import Footer from "components/Footer";
 
-const Games = () => {
-  const pathname = usePathname();
-  const router = useRouter();
-
-  //react-hooks/exhaustive-deps
-  useEffect(() => {
-    router.push("games/memory-game");
-  }, [router]);
-
+const Games: FC = () => {
   return (
     <Layout>
       <Game />
-      {pathname === "/memory-game" && <MemoryGame />}
+      <Footer />
     </Layout>
   );
 };
