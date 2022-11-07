@@ -39,19 +39,27 @@ const Home: FC = () => {
         <div className={styles.contact}>
           <span>
             Site by &nbsp;
-            <a href="https://career.habr.com/danber" target="_blank">
+            <a
+              href="https://career.habr.com/danber"
+              target="_blank"
+              rel="noreferrer"
+            >
               Danber
             </a>
           </span>
           <span>
             Telegram: &nbsp;
-            <a href="https://t.me/danberl" target="_blank">
+            <a href="https://t.me/danberl" target="_blank" rel="noreferrer">
               @Danber
             </a>
           </span>
           <span>
             Email: &nbsp;
-            <a href="mailto:bergauzen.danil@mail.ru" target="_blank">
+            <a
+              href="mailto:bergauzen.danil@mail.ru"
+              target="_blank"
+              rel="noreferrer"
+            >
               bergauzen.danil@mail.ru
             </a>
           </span>
