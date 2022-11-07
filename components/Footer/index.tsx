@@ -20,7 +20,7 @@ const Footer = () => {
         <span>
           Telegram: &nbsp;
           <a href="https://t.me/danberl" target="_blank" rel="noreferrer">
-            @Danber
+            @Danberl
           </a>
         </span>
         <span>
