@@ -148,7 +148,7 @@ const MemoryGame = () => {
                 <Button
                   text="Старт"
                   backgroundColor="#00c35a"
-                  onClick={() => handleClickStart()}
+                  onClick={handleClickStart}
                   padding
                   title="В этой игре тебе нужно открывать карточки, и искать пару к карточкам. Всего у карточки может быть 1 пара.Снизу ты можешь настроить, какие карточки ты хочешь искать, и сколько пар у тебя будет. Удачи!"
                 />
