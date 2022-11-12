@@ -33,12 +33,12 @@
 
 .active {
   padding: 8px 15px;
-  color: $activeTextColor;
+  color: $textColor;
   background-color: $backgroundColorButton;
 }
 
 .disabled {
-  color: darken($activeTextColor, 30%);
+  color: darken($textColor, 30%);
   cursor: not-allowed;
 
   &:hover {

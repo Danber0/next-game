@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
 import Button from "components/Button";
 import Card from "components/Card";
 import Layout from "components/Layout";
+import Popup from "components/Popup";
 
 import styles from "./MemoryGame.module.scss";
 
@@ -24,10 +25,8 @@ const MemoryGame = () => {
   const [checkedCard, setCheckedCard] = useState<CardType>({} as CardType);
   const [closedCards, setClosedCards] = useState<Array<string>>([]);
   const [cards, setCards] = useState<Array<CardType>>(getCard);
-
-  if (closedCards.length && closedCards.length === Number(inputPair)) {
-    console.log("you won!");
-  }
+  let closedCardRef = useRef<Array<string>>([]);
+  closedCardRef.current = closedCards;
 
   useEffect(() => {
     let timer: NodeJS.Timer;
@@ -38,11 +37,13 @@ const MemoryGame = () => {
 
     if (isStart) {
       timer = setInterval(() => {
-        setTime((prev) => prev + 1);
+        if (closedCardRef.current.length !== Number(inputPair)) {
+          setTime((prev) => prev + 1);
+        }
       }, 1000);
     }
 
-    return () => clearInterval(timer);
+    return () => clearInterval(timer as NodeJS.Timer);
   }, [isStart]);
 
   const handleClickStart = () => {
@@ -70,6 +71,8 @@ const MemoryGame = () => {
     setIsStart(true);
     setClosedCards([]);
     setActiveCards([]);
+    setTime(0);
+    setTryCount(0);
     setCheckedCard({} as CardType);
   };
 
@@ -80,8 +83,6 @@ const MemoryGame = () => {
 
   const handleClickRestart = () => {
     handleClickStart();
-    setTime(0);
-    setTryCount(0);
   };
 
   const handleClickOnCard = (index: number) => {
@@ -195,6 +196,15 @@ const MemoryGame = () => {
             />
           ))}
         </div>
+        <Popup active={closedCards.length === Number(inputPair) && isStart}>
+          <div className={styles.title}>
+            <h1>Поздравляю! ты открыл все карточки!</h1>
+          </div>
+          <div className={styles.desc}>
+            <p>Твоё время составило: {time}</p>
+            <p>Количество неправильных комбинаций: {tryCount}</p>
+          </div>
+        </Popup>
       </div>
     </Layout>
   );
