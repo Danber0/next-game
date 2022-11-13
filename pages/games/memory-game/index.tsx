@@ -15,6 +15,27 @@ import { CardType } from "types";
 
 const getCard = generateCards(20);
 
+const getSpaceForCard = (count: number) => {
+  switch (true) {
+    case count < 10:
+      return 5;
+    case count < 15:
+      return 6;
+    case count < 20:
+      return 7;
+    case count < 25:
+      return 8;
+    default:
+      return 5;
+  }
+};
+
+const formatter = Intl.NumberFormat("ru", {
+  style: "unit",
+  unit: "second",
+  unitDisplay: "long",
+});
+
 const MemoryGame = () => {
   const [filtered, setFiltered] = useState("Еда");
   const [inputPair, setInputPair] = useState("");
@@ -129,6 +150,12 @@ const MemoryGame = () => {
     setInputPair(e.target.value);
   };
 
+  const handleEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleClickStart();
+    }
+  };
+
   return (
     <Layout>
       <div className={styles.container}>
@@ -148,6 +175,8 @@ const MemoryGame = () => {
               </div>
               <div className={styles.start}>
                 <input
+                  autoFocus
+                  onKeyDown={handleEnterPress}
                   value={inputPair}
                   placeholder="Введите количество пар..."
                   onChange={handleChangeInputPair}
@@ -189,7 +218,11 @@ const MemoryGame = () => {
         </div>
         <div
           className={styles.cards}
-          style={{ gridTemplateColumns: `repeat(${8}, 150px)` }}
+          style={{
+            gridTemplateColumns: `repeat(${
+              isStart ? getSpaceForCard(Number(inputPair)) : 8
+            }, 150px)`,
+          }}
         >
           {cards.map((card, index) => (
             <Card
@@ -205,12 +238,21 @@ const MemoryGame = () => {
           ))}
         </div>
         <Popup active={closedCards.length === Number(inputPair) && isStart}>
-          <div className={styles.title}>
-            <h1>Поздравляю! ты открыл все карточки!</h1>
-          </div>
-          <div className={styles.desc}>
-            <p>Твоё время составило: {time}</p>
-            <p>Количество неправильных комбинаций: {tryCount}</p>
+          <div className={styles.popupMain}>
+            <div className={styles.title}>
+              <h1>Поздравляю ты открыл все карточки🔥😊</h1>
+              <p>
+                Ты выиграл в игре <span>«Игра на память»</span>
+              </p>
+            </div>
+            <div className={styles.desc}>
+              <p>
+                Твоё время: <span>{formatter.format(time)}</span>
+              </p>
+              <p>
+                Количество неправильных попыток: <span>{tryCount}</span>
+              </p>
+            </div>
           </div>
         </Popup>
       </div>

@@ -1,4 +1,4 @@
-import React, { FC, RefObject, useRef } from "react";
+import React, { FC, useRef } from "react";
 
 import styles from "styles/Popup.module.scss";
 
@@ -27,7 +27,8 @@ const Popup: FC<PopupType> = ({ children, active }) => {
       onDoubleClick={handleClickPopup}
     >
       <div className={styles.popup}>
-        <div className={styles.content}>{children}</div>
+        {children}
+        <p className={styles.info}>Кликни 2 раза вне окна, чтобы закрыть</p>
       </div>
     </div>
   );
