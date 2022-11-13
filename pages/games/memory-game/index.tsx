@@ -25,7 +25,9 @@ const MemoryGame = () => {
   const [checkedCard, setCheckedCard] = useState<CardType>({} as CardType);
   const [closedCards, setClosedCards] = useState<Array<string>>([]);
   const [cards, setCards] = useState<Array<CardType>>(getCard);
+
   let closedCardRef = useRef<Array<string>>([]);
+
   closedCardRef.current = closedCards;
 
   useEffect(() => {
@@ -44,6 +46,8 @@ const MemoryGame = () => {
     }
 
     return () => clearInterval(timer as NodeJS.Timer);
+
+    //  eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isStart]);
 
   const handleClickStart = () => {
@@ -85,38 +89,41 @@ const MemoryGame = () => {
     handleClickStart();
   };
 
-  const handleClickOnCard = (index: number) => {
-    // Если мы не нажали старт, то просто игнорим нажатия
-    if (!isStart) {
-      return;
-    }
-
-    // Этот if проверяет, если мы открыли 2 карточки то идёт проверка дальше
-    if (activeCards.length !== 2 && activeCards[0] !== index) {
-      setActiveCards([...activeCards, index]);
-      setCheckedCard({ url: cards[index].url, id: cards[index].id });
-
-      // Этот if отвечает за добавление попытки в стейт
-      if (
-        activeCards[0] !== activeCards[1] &&
-        checkedCard.url !== cards[index].url
-      ) {
-        setTryCount((prev) => prev + 1);
+  const handleClickOnCard = React.useCallback(
+    (index: number) => {
+      // Если мы не нажали старт, то просто игнорим нажатия
+      if (!isStart) {
+        return;
       }
 
-      // Этот if проверяет, одинаковые ли карточки мы открыли
-      if (
-        checkedCard.url === cards[index].url &&
-        checkedCard.id !== cards[index].id
-      ) {
-        setClosedCards([...closedCards, cards[index].url]);
+      // Этот if проверяет, если мы открыли 2 карточки то идёт проверка дальше
+      if (activeCards.length !== 2 && activeCards[0] !== index) {
+        setActiveCards([...activeCards, index]);
+        setCheckedCard({ url: cards[index].url, id: cards[index].id });
+
+        // Этот if отвечает за добавление попытки в стейт
+        if (
+          activeCards[0] !== activeCards[1] &&
+          checkedCard.url !== cards[index].url
+        ) {
+          setTryCount((prev) => prev + 1);
+        }
+
+        // Этот if проверяет, одинаковые ли карточки мы открыли
+        if (
+          checkedCard.url === cards[index].url &&
+          checkedCard.id !== cards[index].id
+        ) {
+          setClosedCards([...closedCards, cards[index].url]);
+        }
+      } else {
+        // Иначе мы просто добавляем 1 карточку в стейт
+        setActiveCards([index]);
+        setCheckedCard({ url: cards[index].url, id: cards[index].id });
       }
-    } else {
-      // Иначе мы просто добавляем 1 карточку в стейт
-      setActiveCards([index]);
-      setCheckedCard({ url: cards[index].url, id: cards[index].id });
-    }
-  };
+    },
+    [isStart, activeCards, cards, checkedCard.url, checkedCard.id, closedCards]
+  );
 
   const handleChangeInputPair = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputPair(e.target.value);
@@ -189,10 +196,11 @@ const MemoryGame = () => {
               key={index}
               url={card.url}
               id={card.id}
+              index={index}
               active={
                 activeCards.includes(index) || closedCards.includes(card.url)
               }
-              onClick={() => handleClickOnCard(index)}
+              onClick={handleClickOnCard}
             />
           ))}
         </div>

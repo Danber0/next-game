@@ -7,14 +7,15 @@ interface CardProps {
   url: string;
   id: number;
   active?: boolean;
-  onClick: () => void;
+  onClick: (index: number) => void;
+  index: number;
 }
 
-const Card: FC<CardProps> = ({ url, active, onClick }) => {
+const Card: FC<CardProps> = ({ url, active, onClick, index }) => {
   return (
     <div
       className={active ? `${styles.active} ${styles.card}` : styles.card}
-      onClick={onClick}
+      onClick={() => onClick(index)}
     >
       <div className={styles.flipCard}>
         <div className={styles.back}>
@@ -32,4 +33,4 @@ const Card: FC<CardProps> = ({ url, active, onClick }) => {
   );
 };
 
-export default Card;
+export default React.memo(Card);

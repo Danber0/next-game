@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 
 import styles from "styles/Devider.module.scss";
 
@@ -10,4 +10,4 @@ const Divider: FC<DividerProps> = ({ padding }) => {
   return <div className={styles.divider} style={{ padding }} />;
 };
 
-export default Divider;
+export default memo(Divider);

@@ -3,24 +3,4 @@
 .container {
   max-width: 1270px;
   margin: 40px auto;
-
-  .navbar {
-    margin-bottom: 20px;
-    ul {
-      display: flex;
-
-      li {
-        padding-right: 200px;
-        a {
-          font-size: 25px;
-          color: $textColor;
-          text-decoration: none;
-        }
-
-        .active {
-          color: $backgroundColorButton;
-        }
-      }
-    }
-  }
 }
