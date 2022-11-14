@@ -1,3 +1,18 @@
 .games {
   margin-bottom: 35px;
+
+  button {
+    animation: animation-button 1s ease-in-out;
+  }
+}
+
+@keyframes animation-button {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

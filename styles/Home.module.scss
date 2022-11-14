@@ -8,6 +8,7 @@
     position: relative;
 
     .text {
+      animation: animation-text 1s ease-in-out;
       font-family: "Nunito", sans-serif;
       font-style: normal;
       font-weight: 700;
@@ -21,6 +22,7 @@
     }
 
     .image {
+      animation: animation-image 1s ease-in-out;
       img {
         width: 100%;
         height: 100%;
@@ -29,7 +31,41 @@
   }
 
   button {
+    animation: animation-button 1s ease-in-out;
     position: absolute;
     bottom: 20px;
+  }
+}
+
+@keyframes animation-text {
+  0% {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes animation-image {
+  0% {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes animation-button {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

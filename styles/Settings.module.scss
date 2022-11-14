@@ -1,0 +1,44 @@
+@import "variables";
+
+.settings {
+  display: flex;
+  animation: animation-settings 1s ease-in-out;
+  margin-bottom: 25px;
+
+  .settingsInner {
+    display: flex;
+
+    .start {
+      input {
+        outline: none;
+        color: $textColor;
+        padding: 8px 15px;
+        background-color: transparent;
+        font-size: 15px;
+        border-radius: 10px;
+        font-style: normal;
+        font-weight: 400;
+        margin-right: 15px;
+        border: 1px solid #353535;
+        width: 226px;
+
+        &::placeholder {
+          color: $textColor;
+        }
+      }
+    }
+  }
+}
+
+.none {
+  display: none;
+}
+
+@keyframes animation-settings {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

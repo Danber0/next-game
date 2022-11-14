@@ -1,0 +1,38 @@
+@mixin cardsInitial {
+  display: grid;
+  justify-content: center;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.cards {
+  @include cardsInitial;
+  animation: animation-cards 1s ease-in-out;
+}
+
+.none {
+  @include cardsInitial;
+  animation: animation-cards-empty 1s ease-in-out;
+}
+
+@keyframes animation-cards {
+  0% {
+    opacity: 0;
+    transform: translatey(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes animation-cards-empty {
+  0% {
+    opacity: 0;
+    transform: translatey(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
